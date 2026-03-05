@@ -59,9 +59,19 @@ const AlumniDashboard = () => {
     }, []);
 
     useEffect(() => {
+        let intervalId;
         if (activeChat) {
-            fetchMessages();
+            fetchMessages(); // Fetch immediately on chat switch
+
+            // Poll for new messages every 1000ms as a fallback to missing socket events
+            intervalId = setInterval(() => {
+                fetchMessages();
+            }, 1000);
         }
+
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+        };
     }, [activeChat]);
 
     useEffect(() => {
