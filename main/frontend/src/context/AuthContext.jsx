@@ -1,5 +1,10 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+
+// Configure Axios base URL based on environment
+axios.defaults.baseURL = import.meta.env.PROD ? window.location.origin : 'http://localhost:5000';
+
+import { useNavigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext();
