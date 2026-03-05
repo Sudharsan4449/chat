@@ -211,7 +211,7 @@ const AlumniDashboard = () => {
                                     value={messageInput}
                                     onChange={(e) => setMessageInput(e.target.value)}
                                     placeholder={`Message ${activeChat.type === 'group' ? '#' : '@'}${activeChat.name}...`}
-                                    className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                                    className="flex-1 border border-gray-300 bg-white text-gray-900 placeholder-gray-500 rounded-full px-4 py-2 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                                 />
                                 <button
                                     type="submit"
