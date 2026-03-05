@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,8 +7,17 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [bgIndex, setBgIndex] = useState(0);
+    const backgrounds = ['/bg-login-1.png', '/bg-login-2.png', '/bg-login-3.png'];
     const { login } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setBgIndex((prev) => (prev + 1) % backgrounds.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,8 +31,11 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg">
+        <div
+            className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ease-in-out bg-cover bg-center"
+            style={{ backgroundImage: `url('${backgrounds[bgIndex]}')` }}
+        >
+            <div className="max-w-md w-full space-y-8 bg-white/90 backdrop-blur-md p-10 rounded-2xl shadow-2xl border border-white/20">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 border-b pb-4">
                         Alumni Interaction System

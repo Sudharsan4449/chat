@@ -132,9 +132,9 @@ const AlumniDashboard = () => {
     };
 
     return (
-        <div className="flex h-screen bg-gray-100 overflow-hidden">
+        <div className="flex h-screen bg-cover bg-center overflow-hidden" style={{ backgroundImage: "url('/bg-alumni.png')" }}>
             {/* Sidebar */}
-            <div className="w-80 bg-white border-r flex flex-col">
+            <div className="w-80 bg-white/90 backdrop-blur-xl border-r border-white/20 flex flex-col shadow-2xl z-20">
                 <div className="p-4 bg-blue-600 text-white flex justify-between items-center shadow-md">
                     <span className="font-semibold truncate pr-2">{user.name}</span>
                     <button onClick={logout} className="text-xs bg-red-500 px-2 py-1 rounded hover:bg-red-600">Logout</button>
@@ -182,11 +182,11 @@ const AlumniDashboard = () => {
             </div>
 
             {/* Main Chat Area */}
-            <div className="flex-1 flex flex-col bg-gray-50">
+            <div className="flex-1 flex flex-col bg-white/70 backdrop-blur-sm">
                 {activeChat ? (
                     <>
                         {/* Chat Header */}
-                        <div className="bg-white p-4 border-b flex items-center shadow-sm z-10">
+                        <div className="bg-white/90 backdrop-blur-md p-4 border-b border-white/20 flex items-center shadow-sm z-10">
                             <div className="text-xl font-semibold text-gray-800">
                                 {activeChat.type === 'group' ? '#' : '@'} {activeChat.name}
                             </div>
@@ -214,7 +214,7 @@ const AlumniDashboard = () => {
                         </div>
 
                         {/* Input form */}
-                        <div className="p-4 bg-white border-t">
+                        <div className="p-4 bg-white/90 backdrop-blur-md border-t border-white/20">
                             <form onSubmit={handleSendMessage} className="flex space-x-2">
                                 <input
                                     type="text"
